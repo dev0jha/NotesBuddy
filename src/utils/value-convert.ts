@@ -5,8 +5,8 @@ export function convertSanityValueToPrismaValue(
 ): string | null {
   const conversionMaps = {
     university: {
-      medicaps: "MEDICAPS",
-      ips: "IPS",
+      kmclu: "KMCLU",
+      amity: "AMITY",
     },
     degree: {
       "btech-cse": "BTECH_CSE",
@@ -44,8 +44,8 @@ export function convertPrismaValueToDisplayFormat(
 ): string {
   const displayMaps = {
     university: {
-      MEDICAPS: "Medicaps University",
-      IPS: "IPS University",
+      KMCLU: "KMCLU University",
+      AMITY: "Amity University",
     },
     degree: {
       BTECH_CSE: "B.Tech CSE",

@@ -24,12 +24,12 @@ export interface YearConfig {
 }
 
 export const ACADEMIC_CONFIG: Record<string, UniversityConfig> = {
-  MEDICAPS: {
+  KMCLU: {
     info: {
-      value: "MEDICAPS",
-      label: "Medicaps University",
-      prismaValue: "MEDICAPS",
-      sanityValue: "medicaps",
+      value: "KMCLU",
+      label: "KMCLU University",
+      prismaValue: "KMCLU",
+      sanityValue: "kmclu",
     },
     degrees: {
       BTECH_CSE: {
@@ -132,12 +132,12 @@ export const ACADEMIC_CONFIG: Record<string, UniversityConfig> = {
       },
     },
   },
-  IPS: {
+  AMITY: {
     info: {
-      value: "IPS",
-      label: "IPS University",
-      prismaValue: "IPS",
-      sanityValue: "ips",
+      value: "AMITY",
+      label: "Amity University",
+      prismaValue: "AMITY",
+      sanityValue: "amity",
     },
     degrees: {
       BTECH_IT: {

@@ -1,10 +1,10 @@
 export const UNIVERSITY_OPTIONS = {
-  MEDICAPS: {
-    prismaValue: "MEDICAPS",
-    sanityValue: "medicaps",
-    title: "Medicaps University",
+  KMCLU: {
+    prismaValue: "KMCLU",
+    sanityValue: "kmclu",
+    title: "KMCLU University",
   },
-  IPS: { prismaValue: "IPS", sanityValue: "ips", title: "IPS University" },
+  AMITY: { prismaValue: "AMITY", sanityValue: "amity", title: "Amity University" },
 } as const;
 
 export const DEGREE_OPTIONS = {
