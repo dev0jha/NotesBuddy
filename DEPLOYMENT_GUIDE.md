@@ -160,7 +160,7 @@ https://yourdomain.com/api/premium/webhook
 
 **Check 2: Environment variable is set**
 ```bash
-RAZORPAY_WEBHOOK_SECRET=6388Deva
+RAZORPAY_WEBHOOK_SECRET=razorpay_webhook_secret
 ```
 
 **Check 3: SSL Certificate**
