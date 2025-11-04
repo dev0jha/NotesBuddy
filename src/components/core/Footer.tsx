@@ -63,7 +63,7 @@ export default function Footer() {
           alt="dev0jha"
         />
         <p className="opacity-50 transition-all duration-300 ease-in-out group-hover:opacity-100">
-          <Link target="_blank" href="https://www.ramx.in">
+          <Link target="_blank" href="https://devfolio.tech">
             Build with ❤️{" "}
             <span className="transition-all duration-300 ease-in-out group-hover:underline">
               dev0jha
