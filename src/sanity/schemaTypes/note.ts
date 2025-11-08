@@ -29,8 +29,8 @@ export const note = defineType({
       validation: (Rule) => Rule.required(),
       options: {
         list: [
-          { title: "Medicaps University", value: "medicaps" },
-          { title: "IPS University", value: "ips" },
+          { title: "KMCLU University", value: "kmclu" },
+          { title: "Amity University", value: "amity" },
         ],
       },
     }),
