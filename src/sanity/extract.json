@@ -328,11 +328,11 @@
           "of": [
             {
               "type": "string",
-              "value": "medicaps"
+              "value": "kmclu"
             },
             {
               "type": "string",
-              "value": "ips"
+              "value": "amity"
             }
           ]
         },

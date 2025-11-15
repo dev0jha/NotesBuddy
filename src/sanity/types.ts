@@ -79,7 +79,7 @@ export type Note = {
   title?: string;
   syllabus?: string;
   slug?: Slug;
-  university?: "medicaps" | "ips";
+  university?: "kmclu" | "amity";
   degree?: "btech-cse" | "btech-it";
   year?: "1st-year" | "2nd-year" | "3rd-year" | "4th-year";
   semester?:
@@ -342,7 +342,7 @@ export type NOTES_QUERYResult = Array<{
   title: string | null;
   syllabus: string | null;
   slug: Slug | null;
-  university: "ips" | "medicaps" | null;
+  university: "amity" | "kmclu" | null;
   degree: "btech-cse" | "btech-it" | null;
   year: "1st-year" | "2nd-year" | "3rd-year" | "4th-year" | null;
   semester:
@@ -382,7 +382,7 @@ export type NOTE_BY_SLUG_QUERYResult = {
   _id: string;
   title: string | null;
   syllabus: string | null;
-  university: "ips" | "medicaps" | null;
+  university: "amity" | "kmclu" | null;
   degree: "btech-cse" | "btech-it" | null;
   year: "1st-year" | "2nd-year" | "3rd-year" | "4th-year" | null;
   semester:
