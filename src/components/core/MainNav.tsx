@@ -4,7 +4,6 @@ import { adminStatus } from "@/lib/db/user";
 import AdminIcon from "../icons/AdminIcon";
 import { Button } from "../ui/button";
 import Logo from "./Logo";
-import WhatsappIcon from "../icons/WhatsappIcon";
 import PromoBanner from "./PromoBanner";
 
 const navItems = [
@@ -74,7 +73,6 @@ export default async function MainNav() {
               </Button>
             </Link>
           )}
-          <WhatsappIcon />
           <Profile />
         </div>
       </nav>

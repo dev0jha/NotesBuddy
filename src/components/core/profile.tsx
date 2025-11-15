@@ -24,7 +24,6 @@ import ReportButton from "./ReportButton";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import CardsIcon from "../icons/CardsIcon";
 import AiIcon from "../icons/AiIcon";
-import WhatsappDuoIcon from "../icons/WhatsappDuoIcon";
 import { checkUserOnboardingStatus } from "@/app/(main)/(auth)/onboarding/user-actions";
 
 export default function Profile() {
@@ -156,18 +155,6 @@ export default function Profile() {
           >
             <AiIcon className="size-4" />
             AI Assistant
-          </DropdownMenuItem>
-        </Link>
-        <Link
-          target="_blank"
-          href="https://chat.whatsapp.com/EcretA1N7eCFQeHecm1uWO"
-        >
-          <DropdownMenuItem
-            data-umami-event="profile-dropdown-Whatsapp-click"
-            className="hover:cursor-pointer"
-          >
-            <WhatsappDuoIcon className="size-4" />
-            Join Whatsapp!
           </DropdownMenuItem>
         </Link>
         <DropdownMenuSeparator />
