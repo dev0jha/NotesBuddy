@@ -19,13 +19,21 @@ const baseURL =
   process.env.BETTER_AUTH_URL ||
   process.env.NEXTAUTH_URL ||
   process.env.NEXT_PUBLIC_WEBSITE_URL ||
-  process.env.VERCEL_URL
+  (process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
+    : "http://localhost:3001");
+
+console.log("[Better Auth] Using baseURL:", baseURL);
+console.log("[Better Auth] Environment variables check:", {
+  BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
+  NEXT_PUBLIC_WEBSITE_URL: process.env.NEXT_PUBLIC_WEBSITE_URL,
+  VERCEL_URL: process.env.VERCEL_URL,
+});
 
 export const auth = betterAuth({
   baseURL,
   secret: process.env.BETTER_AUTH_SECRET,
+  trustedOrigins: [baseURL],
   socialProviders: {
     google: {
       prompt: "select_account",
