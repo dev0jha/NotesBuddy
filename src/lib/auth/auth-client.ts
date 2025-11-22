@@ -1,7 +1,16 @@
 import { createAuthClient } from "better-auth/react";
 import { deviceFingerprintingClientPlugin } from "./plugins/device-fingerprinting-client";
 
+// Get the base URL for the client - this ensures it works in both dev and production
+const getBaseURL = () => {
+  if (typeof window !== "undefined") {
+    return window.location.origin;
+  }
+  return process.env.NEXT_PUBLIC_WEBSITE_URL || "http://localhost:3001";
+};
+
 export const authClient = createAuthClient({
+  baseURL: getBaseURL(),
   plugins: [deviceFingerprintingClientPlugin()],
 });
 
