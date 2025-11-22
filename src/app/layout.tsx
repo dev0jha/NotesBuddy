@@ -1,15 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Umami from "@/components/auth/Umami";
-import { ThemeProvider } from "@/components/ui/theme-provider";
-import { DeviceFingerprint } from "@/components/auth/DeviceFingerprint";
-import { ViewTransitions } from "next-view-transitions";
-import Footer from "@/components/core/Footer";
 import { Poppins, Lexend, Montserrat, Roboto, Inter } from "next/font/google";
-import { ReactLenis } from "@/utils/lenis";
-import { Toaster } from "@/components/ui/sonner";
-import MainNav from "@/components/core/MainNav";
-import CrossableBanner from "@/components/core/CrossableBanner";
 import Head from "next/head";
 import { ThemeInitScript } from "@/components/ui/ThemeInitScript";
 import { GoogleAnalytics } from "@next/third-parties/google";

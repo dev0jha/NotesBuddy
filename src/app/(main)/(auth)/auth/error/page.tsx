@@ -71,7 +71,7 @@ function AuthErrorContent() {
     } finally {
       setIsLoading(false);
     }
-  }, [userId]);
+  }, [userId, token]);
 
   useEffect(() => {
     // If device verification failed (not device limit), ensure no session and send to /failed

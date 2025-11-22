@@ -15,8 +15,9 @@ import {
   ArrowRightIcon,
 } from "@phosphor-icons/react";
 import {
-    toggleLikeNextContent,
-  revalidatePath,
+  getNextContentAction,
+  getSubjectQuizzesAction,
+  getSubjectFlashcardsAction,
 } from "@/app/(main)/(user)/notes/[slug]/next-content-actions";
 import { telegramLogger } from "@/utils/telegram-logger";
 
