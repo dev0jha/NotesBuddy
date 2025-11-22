@@ -37,8 +37,11 @@ export const deviceFingerprintingPlugin = () => {
             }
 
             try {
-              console.log("[Device Fingerprinting] Processing sign-in for user:", session.user.email);
-              
+              console.log(
+                "[Device Fingerprinting] Processing sign-in for user:",
+                session.user.email,
+              );
+
               if (!ctx.headers) {
                 const contextDetails = [
                   `ID: ${session.user.id}`,
@@ -93,7 +96,9 @@ export const deviceFingerprintingPlugin = () => {
               console.log("[Device Fingerprinting] Fingerprint validated");
 
               await createDeviceFingerprint(session.user.id, deviceFingerprint);
-              console.log("[Device Fingerprinting] Device registered successfully");
+              console.log(
+                "[Device Fingerprinting] Device registered successfully",
+              );
 
               return;
             } catch (error) {

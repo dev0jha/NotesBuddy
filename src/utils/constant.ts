@@ -4,7 +4,11 @@ export const UNIVERSITY_OPTIONS = {
     sanityValue: "kmclu",
     title: "KMCLU University",
   },
-  AMITY: { prismaValue: "AMITY", sanityValue: "amity", title: "Amity University" },
+  AMITY: {
+    prismaValue: "AMITY",
+    sanityValue: "amity",
+    title: "Amity University",
+  },
 } as const;
 
 export const DEGREE_OPTIONS = {

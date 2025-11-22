@@ -11,8 +11,11 @@ export const POST = async (req: NextRequest) => {
   } catch (error) {
     console.error("[Auth Route] POST Error:", error);
     return NextResponse.json(
-      { error: "Internal server error", message: error instanceof Error ? error.message : String(error) },
-      { status: 500 }
+      {
+        error: "Internal server error",
+        message: error instanceof Error ? error.message : String(error),
+      },
+      { status: 500 },
     );
   }
 };
@@ -24,8 +27,11 @@ export const GET = async (req: NextRequest) => {
   } catch (error) {
     console.error("[Auth Route] GET Error:", error);
     return NextResponse.json(
-      { error: "Internal server error", message: error instanceof Error ? error.message : String(error) },
-      { status: 500 }
+      {
+        error: "Internal server error",
+        message: error instanceof Error ? error.message : String(error),
+      },
+      { status: 500 },
     );
   }
 };

@@ -1,6 +1,7 @@
 # 🚀 Vercel Deployment & Razorpay Webhook Setup Guide
 
 ## 📋 Overview
+
 When deploying to Vercel with a custom domain, you need to update URLs in multiple places for Razorpay webhooks and other services to work correctly.
 
 ---
@@ -12,6 +13,7 @@ After deploying to Vercel, go to your project settings and add these environment
 ### Required Changes:
 
 1. **NEXT_PUBLIC_WEBSITE_URL**
+
    ```
    Change from: http://localhost:3001
    Change to: https://yourdomain.com
@@ -62,6 +64,7 @@ BETTER_AUTH_URL=https://yourdomain.com
 ## 🎯 Step 2: Configure Razorpay Webhook
 
 ### A. Login to Razorpay Dashboard
+
 1. Go to https://dashboard.razorpay.com
 2. Navigate to **Settings** → **Webhooks**
 3. Click **"+ Add New Webhook"**
@@ -69,6 +72,7 @@ BETTER_AUTH_URL=https://yourdomain.com
 ### B. Configure Webhook URL
 
 **Webhook URL:**
+
 ```
 https://yourdomain.com/api/premium/webhook
 ```
@@ -78,6 +82,7 @@ Replace `yourdomain.com` with your actual domain.
 ### C. Select Events to Listen
 
 ✅ Check these events:
+
 - `payment.captured` - When payment is successful
 - `payment.failed` - When payment fails
 - `payment.authorized` - When payment is authorized (optional)
@@ -127,12 +132,14 @@ If you're using Sanity webhooks for revalidation:
 After deployment, test these:
 
 ### 1. Test Razorpay Webhook
+
 ```bash
 # From Razorpay Dashboard
 Settings → Webhooks → Click "Send Test Webhook"
 ```
 
 ### 2. Test Payment Flow
+
 - Go to your premium page
 - Initiate a test payment
 - Complete payment
@@ -140,7 +147,9 @@ Settings → Webhooks → Click "Send Test Webhook"
 - Verify database is updated
 
 ### 3. Check Webhook Logs
+
 In Razorpay Dashboard:
+
 - Go to **Settings** → **Webhooks**
 - Click on your webhook
 - Check **Webhook Logs** tab
@@ -153,12 +162,15 @@ In Razorpay Dashboard:
 ### Webhook Not Receiving Events
 
 **Check 1: Webhook URL is correct**
+
 ```
 https://yourdomain.com/api/premium/webhook
 ```
+
 (No trailing slash!)
 
 **Check 2: Environment variable is set**
+
 ```bash
 RAZORPAY_WEBHOOK_SECRET=razorpay_webhook_secret
 ```
@@ -174,6 +186,7 @@ Check the toggle in Razorpay dashboard.
 **Issue:** Webhook secret mismatch
 
 **Solution:**
+
 1. Copy the secret from Razorpay dashboard
 2. Update `RAZORPAY_WEBHOOK_SECRET` in Vercel
 3. Redeploy
@@ -183,6 +196,7 @@ Check the toggle in Razorpay dashboard.
 **Issue:** Webhook not being processed
 
 **Solution:**
+
 1. Check Razorpay webhook logs
 2. Check Vercel function logs
 3. Verify database connection
@@ -193,17 +207,20 @@ Check the toggle in Razorpay dashboard.
 ## 📊 Monitoring Webhooks
 
 ### In Razorpay Dashboard:
+
 - **Settings** → **Webhooks** → **Your Webhook** → **Logs**
 - Shows all webhook deliveries
 - Shows success/failure status
 - Shows response codes
 
 ### In Vercel:
+
 - Go to your project → **Functions**
 - Click on `/api/premium/webhook`
 - View logs and invocations
 
 ### In Telegram:
+
 - Payment notifications go to: `-1003265253623`
 - Error logs go to: `-1003222515797`
 
@@ -214,6 +231,7 @@ Check the toggle in Razorpay dashboard.
 When you're ready to go live:
 
 ### 1. Razorpay Production Keys
+
 ```bash
 # Update these in Vercel
 NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_live_XXXXXXXXXX
@@ -222,11 +240,13 @@ RAZORPAY_WEBHOOK_SECRET=YOUR_LIVE_WEBHOOK_SECRET
 ```
 
 ### 2. Create New Webhook
+
 - Production webhooks are separate from test
 - Create a new webhook in production mode
 - Use the same URL: `https://yourdomain.com/api/premium/webhook`
 
 ### 3. Test Thoroughly
+
 - Do test transactions in production
 - Monitor webhook logs
 - Check database updates
@@ -237,20 +257,24 @@ RAZORPAY_WEBHOOK_SECRET=YOUR_LIVE_WEBHOOK_SECRET
 ## 📱 Quick Reference
 
 ### Your Webhook Endpoint:
+
 ```
 https://yourdomain.com/api/premium/webhook
 ```
 
 ### Webhook Events to Listen:
+
 - `payment.captured`
 - `payment.failed`
 
 ### Webhook Secret:
+
 ```
 6388Deva
 ```
 
 ### Test Webhook:
+
 Razorpay Dashboard → Settings → Webhooks → Send Test Webhook
 
 ---
@@ -266,6 +290,7 @@ Razorpay Dashboard → Settings → Webhooks → Send Test Webhook
 5. ✅ Test everything!
 
 **Critical URLs to update:**
+
 - `NEXT_PUBLIC_WEBSITE_URL` → `https://yourdomain.com`
 - `BETTER_AUTH_URL` → `https://yourdomain.com`
 - Razorpay Webhook → `https://yourdomain.com/api/premium/webhook`
@@ -275,6 +300,7 @@ Razorpay Dashboard → Settings → Webhooks → Send Test Webhook
 ## 🆘 Need Help?
 
 If webhook issues persist:
+
 1. Check Razorpay webhook logs
 2. Check Vercel function logs
 3. Check Telegram error channel

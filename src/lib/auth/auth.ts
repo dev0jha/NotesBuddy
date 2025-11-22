@@ -4,14 +4,21 @@ import prisma from "@/lib/db/prisma";
 import { deviceFingerprintingPlugin } from "./plugins/device-fingerprinting";
 
 if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
-  console.error("Missing Google OAuth credentials. Please set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in your environment variables.");
+  console.error(
+    "Missing Google OAuth credentials. Please set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in your environment variables.",
+  );
 }
 
 if (!process.env.BETTER_AUTH_SECRET) {
-  console.error("Missing BETTER_AUTH_SECRET. Please set it in your environment variables.");
+  console.error(
+    "Missing BETTER_AUTH_SECRET. Please set it in your environment variables.",
+  );
 }
 
-const baseURL = process.env.BETTER_AUTH_URL || process.env.NEXTAUTH_URL || "http://localhost:3000";
+const baseURL =
+  process.env.BETTER_AUTH_URL ||
+  process.env.NEXTAUTH_URL ||
+  "http://localhost:3000";
 
 export const auth = betterAuth({
   baseURL,

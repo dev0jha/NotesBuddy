@@ -16,6 +16,10 @@ import ProfileClient from "@/components/profile/ProfileClient";
 import { Device } from "@/types/device";
 import { telegramLogger } from "@/utils/telegram-logger";
 
+type PurchaseHistory = Awaited<
+  ReturnType<typeof getUserPremiumPurchaseHistory>
+>[number];
+
 export const metadata: Metadata = {
   title: "Profile",
   description: "Profile page",
@@ -110,7 +114,7 @@ export default async function Profile() {
                     ? new Date(premiumStatus.expiryDate)
                     : null,
                 }}
-                purchases={purchases.map((purchase) => ({
+                purchases={purchases.map((purchase: PurchaseHistory) => ({
                   id: purchase.id,
                   tier: purchase.tier as "TIER_1" | "TIER_2" | "TIER_3",
                   originalAmount: Number(purchase.originalAmount),

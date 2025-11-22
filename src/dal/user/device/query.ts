@@ -580,7 +580,7 @@ export async function createDeviceFingerprint(
 
     const fingerprintHash = generateDeviceHash(deviceData.fingerprint);
     console.log("[createDeviceFingerprint] Fingerprint hash generated");
-    
+
     const similarDevice = await findSimilarDeviceOptimized(
       userId,
       deviceData.fingerprint,

@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
       revalidatePath("/notes", "page");
       revalidatePath("/notes/[slug]", "page");
       revalidateTag("notes");
-      
+
       console.log("✅ Revalidated notes pages");
     }
 
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     console.error("❌ Error revalidating:", error);
     return NextResponse.json(
       { message: "Error revalidating", error: String(error) },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 // Allow GET requests for testing
 export async function GET(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get("secret");
-  
+
   if (secret !== process.env.SANITY_REVALIDATE_SECRET) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
