@@ -31,6 +31,8 @@ export async function handleOnboarding(formData: FormData) {
   const validationResult = onboardingFormSchema.safeParse(rawData);
 
   if (!validationResult.success) {
+    console.error("Validation failed:", validationResult.error);
+    console.error("Raw data:", rawData);
     return {
       success: false,
       error: "Invalid form data",
@@ -122,9 +124,15 @@ export async function handleOnboarding(formData: FormData) {
     }
 
     console.error("Onboarding error:", error);
+    console.error("Error details:", JSON.stringify(error, null, 2));
+
+    // Return more detailed error information for debugging
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error occurred";
     return {
       success: false,
       error: "Failed to complete onboarding. Please try again.",
+      debug: process.env.NODE_ENV === "development" ? errorMessage : undefined,
     };
   }
 }
