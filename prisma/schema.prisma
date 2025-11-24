@@ -122,6 +122,8 @@ enum Role {
 enum University {
   MEDICAPS
   IPS
+  KMCLU
+  AMITY
 }
 
 enum Degree {
