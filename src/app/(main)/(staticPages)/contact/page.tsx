@@ -21,10 +21,10 @@ export default function ContactPage() {
         Reach out to us directly at:
       </p>
       <a
-        href="mailto:notesbuddymu@gmail.com"
+        href="mailto:ojha6773@gmail.com"
         className="font-excon rounded-lg border-2 border-black bg-zinc-100 px-8 py-4 text-2xl font-bold tracking-wider text-black shadow-[4px_4px_0px_0px_#000] transition-all duration-200 hover:bg-black hover:text-white dark:border-white/20 dark:bg-zinc-900 dark:text-white dark:shadow-[4px_4px_0px_0px_#757373] dark:hover:bg-white dark:hover:text-black"
       >
-        notesbuddymu@gmail.com
+        ojha6773@gmail.com
       </a>
     </section>
   );
