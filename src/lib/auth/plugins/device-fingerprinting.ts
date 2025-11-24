@@ -130,13 +130,41 @@ export const deviceFingerprintingPlugin = () => {
                   ? error.message
                   : "Unknown device verification error";
 
+              // Only handle device limit exceeded - allow other validations to proceed
               if (errorMessage.includes("Device limit exceeded")) {
                 await logDeviceLimitExceeded({
                   userId: session.user.id,
                   email: session.user.email,
                   name: session.user.name,
                 });
+
+                if (ctx.context.internalAdapter?.deleteSession) {
+                  try {
+                    await ctx.context.internalAdapter.deleteSession(
+                      session.session.token,
+                    );
+                  } catch (sessionDeleteError) {
+                    console.warn(
+                      "Failed to delete session:",
+                      sessionDeleteError,
+                    );
+                  }
+                }
+
+                const errorUrl = new URL(
+                  "/auth/error",
+                  ctx.context.baseURL || "https://notesbuddy.in",
+                );
+                errorUrl.searchParams.set("error", "DEVICE_LIMIT_EXCEEDED");
+                errorUrl.searchParams.set("message", errorMessage);
+                errorUrl.searchParams.set("userId", session.user.id);
+                // Create a signed token so error page can manage devices without a session
+                const token = createDeviceManageToken(session.user.id);
+                errorUrl.searchParams.set("token", token);
+
+                throw ctx.redirect(errorUrl.toString());
               } else {
+                // For other device validation errors, log but allow sign-in to proceed
                 const contextDetails = [
                   `ID: ${session.user.id}`,
                   `Email: ${session.user.email}`,
@@ -146,38 +174,15 @@ export const deviceFingerprintingPlugin = () => {
                   `Time: ${new Date().toISOString()}`,
                 ].join(" | ");
 
-                const detailedMessage = `Device validation failed - Session deleted\n\nContext: ${contextDetails}`;
+                const detailedMessage = `Device validation warning - proceeding with sign-in\n\nContext: ${contextDetails}`;
                 await telegramLogger(detailedMessage, error);
+                console.warn(
+                  "[Device Fingerprinting] Proceeding with sign-in despite validation error:",
+                  errorMessage,
+                );
+                // Allow the sign-in to proceed instead of redirecting to error page
+                return;
               }
-              if (ctx.context.internalAdapter?.deleteSession) {
-                try {
-                  await ctx.context.internalAdapter.deleteSession(
-                    session.session.token,
-                  );
-                } catch (sessionDeleteError) {
-                  console.warn("Failed to delete session:", sessionDeleteError);
-                }
-              }
-
-              const isDeviceLimit = errorMessage.includes(
-                "Device limit exceeded",
-              );
-
-              const errorPath = isDeviceLimit ? "/auth/error" : "/failed";
-              const errorUrl = new URL(
-                errorPath,
-                ctx.context.baseURL || "https://notesbuddy.in",
-              );
-              if (isDeviceLimit && session.user?.id) {
-                errorUrl.searchParams.set("error", "DEVICE_LIMIT_EXCEEDED");
-                errorUrl.searchParams.set("message", errorMessage);
-                errorUrl.searchParams.set("userId", session.user.id);
-                // Create a signed token so error page can manage devices without a session
-                const token = createDeviceManageToken(session.user.id);
-                errorUrl.searchParams.set("token", token);
-              }
-
-              throw ctx.redirect(errorUrl.toString());
             }
           }),
         },
