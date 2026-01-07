@@ -3,7 +3,7 @@ import { PremiumTier } from "@prisma/client";
 
 export const TIER_CONFIG = {
   TIER_1: {
-    price: 99,
+    price: 3,
     duration: 180,
     features: [
       "Access to one shots",
