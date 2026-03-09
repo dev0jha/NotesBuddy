@@ -1,275 +1,162 @@
-## NotesBuddy : A Nextjs + Sanity based notes sharing platform.
+# NotesBuddy
 
-Welcome to Notes Buddy, a web platform designed for students to read and share college notes easily. Built with a modern tech stack, it ensures an easy-to-use, visually appealing, and responsive experience.
+A modern notes sharing platform for college students built with Next.js and Sanity CMS.
 
-![HeroSectionImage](https://i.postimg.cc/8PvmSp4y/localhost-3000.png)
+![NotesBuddy Preview](public/NotesBuddy.jpg)
 
-### Features :
+## Features
 
-- Sanity CMS with Caching
-- Notes system, PYQ's, one shots
-- Quiz system (admin + user side)
-- Flashcards (admin + user side)
-- Premium purchase system, with history & upgrading the plan with razorpay
-- User profile management with on-boarding system
-- Referral system
-- wallet system
-- Coupon / Discount system
-- Ai Chat with custom agents based on the subject
-- Admin panel for managing the platform and more!
+- **Notes System** - Browse and access college notes, PYQs, and one-shots
+- **Quiz System** - Interactive quizzes for self-assessment
+- **Flashcards** - Create and study with digital flashcards
+- **AI Chat** - Subject-specific AI assistants powered by Google Gemini
+- **Premium System** - Subscription plans with Razorpay integration
+- **User Management** - Profile, onboarding, and referral system
+- **Admin Panel** - Complete platform management dashboard
+- **Wallet & Coupons** - Balance system with discount codes
 
-### Contributors
+## Tech Stack
+
+| Category      | Technologies                            |
+| ------------- | --------------------------------------- |
+| **Framework** | Next.js 15, React 19, TypeScript        |
+| **Styling**   | Tailwind CSS 4, shadcn/ui, Motion       |
+| **Database**  | PostgreSQL with Prisma ORM              |
+| **CMS**       | Sanity CMS with Portable Text           |
+| **Auth**      | Better Auth                             |
+| **Payments**  | Razorpay                                |
+| **AI**        | Google Gemini AI                        |
+| **Tools**     | Bun, ESLint, Prettier, Husky, Turbopack |
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ or Bun
+- PostgreSQL database
+- Sanity account
+- Razorpay account (for payments)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/dev0jha/NotesBuddy.git
+cd NotesBuddy
+
+# Install dependencies
+bun install
+
+# Setup environment variables
+cp .env.example .env.local
+```
+
+### Environment Variables
+
+```env
+# Database
+DATABASE_URL="postgresql://..."
+
+# Sanity
+NEXT_PUBLIC_SANITY_PROJECT_ID="your_project_id"
+NEXT_PUBLIC_SANITY_DATASET="production"
+SANITY_API_TOKEN="your_api_token"
+
+# Better Auth
+BETTER_AUTH_SECRET="your_auth_secret"
+BETTER_AUTH_URL="http://localhost:3001"
+
+# Razorpay
+RAZORPAY_KEY_ID="your_razorpay_key"
+RAZORPAY_KEY_SECRET="your_razorpay_secret"
+
+# Google AI
+GOOGLE_GENERATIVE_AI_API_KEY="your_gemini_api_key"
+```
+
+See `.env.example` for all required variables.
+
+### Database Setup
+
+```bash
+bun prisma migrate dev
+bun prisma generate
+```
+
+### Run Development Server
+
+```bash
+bun dev
+```
+
+Visit `http://localhost:3001` for the app and `http://localhost:3001/studio` for Sanity Studio.
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── (main)/               # Main app routes
+│   │   ├── (admin)/          # Admin dashboard
+│   │   ├── (auth)/           # Authentication pages
+│   │   ├── (modals)/         # Modal routes
+│   │   ├── (staticPages)/    # Static pages
+│   │   └── (user)/           # User dashboard
+│   ├── (studio)/             # Sanity Studio
+│   └── api/                  # API routes
+│       ├── ai/               # AI endpoints
+│       ├── auth/             # Auth endpoints
+│       ├── flashcard/        # Flashcard actions
+│       ├── premium/          # Payment endpoints
+│       ├── revalidate/       # Cache revalidation
+│       └── user/             # User endpoints
+├── cache/                    # Caching utilities
+├── components/
+│   ├── admin/                # Admin components
+│   ├── ai/                   # AI chat components
+│   ├── auth/                 # Auth components
+│   ├── core/                 # Core UI (Nav, Footer)
+│   ├── flashcard/            # Flashcard components
+│   ├── landing/              # Landing page sections
+│   ├── note/                 # Note display
+│   ├── premium/              # Premium/payment UI
+│   ├── profile/              # User profile
+│   ├── quiz/                 # Quiz components
+│   └── ui/                   # shadcn/ui components
+├── dal/                      # Data Access Layer
+├── hooks/                    # Custom React hooks
+├── lib/                      # Utilities & integrations
+├── sanity/                   # Sanity configuration
+├── types/                    # TypeScript types
+└── utils/                    # Helper functions
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feat/your-feature`
+3. Commit changes: `git commit -m "feat: add new feature"`
+4. Push and create a Pull Request
+
+### Guidelines
+
+- Use TypeScript for all code
+- Follow existing folder structure
+- Use conventional commits (`feat:`, `fix:`, `docs:`, etc.)
+- Test locally before submitting PR
+
+### Database Changes
+
+```bash
+bun prisma migrate dev --name your_migration_name
+```
+
+## Contributors
 
 <a href="https://github.com/dev0jha/NotesBuddy/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=dev0jha/NotesBuddy" />
 </a>
 
-### Tech Stack
+## License
 
-**Frontend:**
-
-- **Next.js 15.3.3** - React framework with App Router
-- **React 19** - UI library with latest features
-- **TypeScript** - Type-safe JavaScript
-- **Tailwind CSS 4** - Utility-first CSS framework
-- **Motion** - Animation library
-- **shadcn/ui** - Pre-built components
-- **Lenis** - Smooth scroll library
-- **React Hook Form** - Form management with Zod validation
-
-**Backend & Database:**
-
-- **Prisma** - Database ORM with PostgreSQL
-- **Better Auth** - Modern authentication system
-- **Next.js API Routes** - Server-side endpoints
-
-**Content Management:**
-
-- **Sanity CMS** - Headless content management
-- **Portable Text** - Rich text content
-- **next-sanity** - Sanity integration for Next.js
-
-**AI & Chat:**
-
-- **Google Gemini AI** - AI chat functionality
-- **Custom AI agents** - Subject-specific chatbots
-
-**Payment & Premium:**
-
-- **Razorpay** - Payment gateway
-- **Hierarchical tier system** - Premium access control
-
-**Development Tools:**
-
-- **Bun** - Package manager and runtime
-- **ESLint** - Code linting
-- **Prettier** - Code formatting
-- **Husky** - Git hooks
-- **Turbopack** - Fast bundler
-
-## Contributing & Installation
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/dev0jha/NotesBuddy.git
-
-    # For Windows
-
-    ren NotesBuddy notes-buddy
-
-    # For Mac/Linux
-
-    mv NotesBuddy notes-buddy
-
-    cd notes-buddy
-   ```
-
-2. **Install dependencies**
-
-```bash
-bun install
-```
-
-3. **Environment Setup**
-   Create a `.env.local` file with the following variables:
-
-   ```env
-   # Database
-   DATABASE_URL="postgresql://..."
-
-   # Sanity
-   NEXT_PUBLIC_SANITY_PROJECT_ID="your_project_id"
-   NEXT_PUBLIC_SANITY_DATASET="production"
-   SANITY_API_TOKEN="your_api_token"
-
-   # Better Auth
-   BETTER_AUTH_SECRET="your_auth_secret"
-   BETTER_AUTH_URL="http://localhost:3000"
-
-   # Razorpay
-   RAZORPAY_KEY_ID="your_razorpay_key"
-   RAZORPAY_KEY_SECRET="your_razorpay_secret"
-
-   <!-- Check .env.example for all the vars -->
-
-   ```
-
-3.1 How to get Telegram Bot Token & Channel URL ->
-**Telegram Bot Setup:**
-
-- Create a new bot via [BotFather](https://t.me/BotFather) on Telegram and copy your bot token.
-- Add your bot to your channel and set it as an admin.
-- Get your channel id from Rose Bot.
-- For a step-by-step guide, watch this video:  
-   [Telegram Bot Setup Tutorial](github/TG-BOT.mp4)
-- Store your bot token and channel URL's in the `.env` file as needed.
-
-4. **Database Setup**
-
-   ```bash
-   bun prisma migrate dev
-   bun prisma generate
-   ```
-
-5. **Start development server**
-
-   ```bash
-   bun dev
-   ```
-
-6. **Access Sanity Studio**
-   Visit `http://localhost:3000/studio` for content management
-
-### Folder Structure
-
-```
-src/
-├── app/                          # Next.js App Router
-│   ├── (admin)/                  # Admin dashboard routes
-│   ├── (auth)/                   # Authentication pages
-│   ├── (modals)/                 # Modal routes
-│   ├── (staticPages)/            # Static pages
-│   ├── (user)/                   # User dashboard routes
-│   ├── api/                      # API endpoints
-│   │   ├── ai/                   # AI chat endpoints
-│   │   ├── auth/                 # Authentication API
-│   │   ├── flashcard/            # Flashcard actions
-│   │   ├── premium/              # Premium & payment API
-│   │   └── user/                 # User management API
-│   └── global.css                # Global styles
-├── cache/                        # Caching utilities
-│   ├── admin.ts                  # Admin data caching
-│   ├── notes.ts                  # Notes caching
-│   ├── premium.ts                # Premium data caching
-│   └── user.ts                   # User data caching
-├── components/                   # React components
-│   ├── admin/                    # Admin dashboard components
-│   ├── ai/                       # AI chat components
-│   ├── auth/                     # Authentication components
-│   ├── chat/                     # Chat interface
-│   ├── core/                     # Core UI components
-│   ├── flashcard/                # Flashcard components
-│   ├── landing/                  # Landing page components
-│   ├── note/                     # Note display components
-│   ├── premium/                  # Premium & payment components
-│   ├── profile/                  # User profile components
-│   ├── quiz/                     # Quiz system components
-│   └── ui/                       # shadcn/ui components
-├── dal/                          # Data Access Layer
-│   ├── ai/                       # AI chat queries
-│   ├── coupon/                   # Coupon & discount queries
-│   ├── flashcard/                # Flashcard data access
-│   ├── note/                     # Notes queries
-│   ├── premium/                  # Premium system queries
-│   ├── quiz/                     # Quiz system queries
-│   ├── referral/                 # Referral system queries
-│   └── user/                     # User management queries
-├── hooks/                        # Custom React hooks
-│   ├── use-audio-recording.ts    # Audio recording hook
-│   ├── use-debounce.ts           # Debounce utility
-│   ├── use-mobile.ts             # Mobile detection
-│   └── use-scroll-progress.ts    # Scroll progress tracking
-├── lib/                          # Utility libraries
-│   ├── auth/                     # Authentication utilities
-│   ├── db/                       # Database utilities
-│   ├── razorpay/                 # Payment integration
-│   ├── search/                   # Search functionality
-│   └── user/                     # User utilities
-├── sanity/                       # Sanity CMS configuration
-├── types/                        # TypeScript type definitions
-└── utils/                        # Utility functions
-    ├── academic-config.ts        # Academic hierarchy config
-    ├── ai-system-prompt.ts       # AI system prompts
-    ├── config.ts                 # App configuration
-    ├── constant.ts               # Application constants
-    └── helpers.ts                # Helper functions
-```
-
-### Naming Conventions
-
-**Files & Folders:**
-
-- Use `kebab-case` for file and folder names
-- Component files use `PascalCase` (e.g., `UserProfile.tsx`)
-- Utility files use `kebab-case` (e.g., `user-profile.ts`)
-- API routes use `kebab-case` folders with `route.ts` files
-
-**Components:**
-
-- React components use `PascalCase`
-- Component props interfaces end with `Props`
-- Custom hooks start with `use` prefix
-
-**Database & API:**
-
-- Database models use `PascalCase` (Prisma convention)
-- API endpoints use `camelCase` for functions
-- Enum values use `UPPER_SNAKE_CASE`
-
-**Variables & Functions:**
-
-- Use `camelCase` for variables and functions
-- Constants use `UPPER_SNAKE_CASE`
-- Boolean variables start with `is`, `has`, `can`, `should`
-
-**Academic Hierarchy:**
-
-- University: `MEDICAPS`, `IPS`
-- Degree: `BTECH_CSE`, `BTECH_IT`
-- Year: `FIRST_YEAR`, `SECOND_YEAR`, etc.
-- Semester: `FIRST_SEMESTER`, `SECOND_SEMESTER`, etc.
-
-### Contribution
-
-1. **Fork the repository** and clone your fork
-2. **Make your contribution** and raise PR.
-3. **Follow the coding standards**:
-   - Use TypeScript for all new code
-   - Follow the established folder structure
-   - Add proper error handling
-   - Include loading and error states for UI components
-4. **Database Changes**:
-   - Create migrations for schema changes: `bun prisma migrate dev --name your_migration_name`
-5. **Testing**:
-   - Test your changes locally
-   - Ensure all existing functionality works
-6. **Commit Guidelines**:
-   - Use conventional commits: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`
-   - Write clear, descriptive commit messages
-7. **Submit a Pull Request**:
-   - Provide a clear description of changes
-   - Link any related issues
-   - Include screenshots for UI changes
-
-**Development Guidelines:**
-
-- Use server actions for data mutations
-- Implement proper caching strategies
-- Follow the established DAL (Data Access Layer) pattern
-- Use Zod for data validation
-- Implement proper error boundaries
-- Follow accessibility best practices
-- Optimize for performance and SEO
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
