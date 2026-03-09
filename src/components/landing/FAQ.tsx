@@ -53,7 +53,7 @@ function FAQItem({
 
   return (
     <motion.div
-      className="bg-card border-primary dark:border-primary/30 rounded-md border border-r-8 border-b-8"
+      className="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] backdrop-blur-sm transition-all duration-300 hover:border-[rgba(255,255,255,0.15)]"
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
@@ -61,16 +61,16 @@ function FAQItem({
     >
       <button
         onClick={onToggle}
-        className="hover:bg-muted/50 flex w-full items-center justify-between p-6 text-left transition-colors hover:cursor-pointer"
+        className="flex w-full items-center justify-between p-6 text-left transition-colors hover:cursor-pointer"
       >
-        <h3 className="text-foreground font-excon text-lg font-semibold">
+        <h3 className="font-excon text-lg font-semibold text-white">
           {question}
         </h3>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <CaretDownIcon className="text-muted-foreground h-5 w-5" />
+          <CaretDownIcon className="h-5 w-5 text-[rgba(255,255,255,0.5)]" />
         </motion.div>
       </button>
 
@@ -83,8 +83,8 @@ function FAQItem({
             exit="exit"
             className="overflow-hidden"
           >
-            <div className="border-t-border border-t px-6 pt-0 pb-6">
-              <p className="text-muted-foreground font-satoshi mt-4 leading-relaxed">
+            <div className="border-t border-[rgba(255,255,255,0.1)] px-6 pt-0 pb-6">
+              <p className="font-satoshi mt-4 leading-relaxed text-[rgba(255,255,255,0.6)]">
                 {answer}
               </p>
             </div>
@@ -160,6 +160,8 @@ export default function FAQ() {
   return (
     <section className="relative overflow-hidden py-20 lg:py-32">
       <div className="absolute inset-0" />
+      {/* Top border line */}
+      <div className="absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.1)] to-transparent" />
 
       <div className="relative z-10 container mx-auto">
         <motion.div
@@ -170,13 +172,13 @@ export default function FAQ() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.h2
-            className="font-regular font-excon mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight font-black tracking-tighter md:text-5xl lg:text-6xl"
+            className="font-excon mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight font-black tracking-tighter text-white md:text-5xl lg:text-6xl"
             variants={titleVariants}
           >
             Frequently Asked Questions
           </motion.h2>
           <motion.p
-            className="text-secondary font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight md:text-xl"
+            className="font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight text-[rgba(255,255,255,0.6)] md:text-xl"
             variants={titleVariants}
           >
             Everything you need to know about Notes Buddy

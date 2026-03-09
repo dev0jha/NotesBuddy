@@ -39,43 +39,54 @@ function PricingCard({
 
   return (
     <motion.div
-      className={`bg-card relative flex flex-col rounded-md border-4 border-black p-8 shadow-[8px_8px_0px_0px_#000] transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_#000] ${
-        highlight ? "z-10 scale-105" : ""
+      className={`relative flex flex-col rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] p-8 backdrop-blur-sm transition-all duration-300 hover:border-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.05)] ${
+        highlight ? "z-10 scale-105 border-[rgba(255,255,255,0.2)]" : ""
       }`}
     >
       {/* Tag */}
-      <div
-        className={`absolute top-6 right-6 rounded-md border-2 border-black bg-white px-3 py-1 text-xs font-bold dark:bg-black`}
-      >
+      <div className="absolute top-6 right-6 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.1)] px-3 py-1 text-xs font-bold text-white">
         {tag}
       </div>
       {/* Price */}
       <div className="mb-2 flex items-end gap-2">
-        <span className="font-excon text-4xl font-black">₹{discounted}/-</span>
+        <span className="font-excon text-4xl font-black text-white">
+          ₹{discounted}/-
+        </span>
       </div>
-      <div className="text-muted-foreground mb-2 text-sm">
+      <div className="mb-2 text-sm text-[rgba(255,255,255,0.5)]">
         Original Price:{" "}
         <span className="line-through">
           ₹{originalPrice.find((p) => p.tier === tier)?.price}/-
         </span>
       </div>
       {/* Title & Desc */}
-      <div className="mb-2 text-lg font-bold">{label}</div>
-      <div className="text-muted-foreground mb-2 text-sm">
+      <div className="mb-2 text-lg font-bold text-white">{label}</div>
+      <div className="mb-2 text-sm text-[rgba(255,255,255,0.6)]">
         {config.description}
       </div>
-      <div className="text-muted-foreground mb-4 text-xs">
-        Valid for <span className="font-bold">{config.duration} Days</span> for{" "}
-        <span className="font-bold">1 Semester</span> from the day you purchase.
+      <div className="mb-4 text-xs text-[rgba(255,255,255,0.5)]">
+        Valid for{" "}
+        <span className="font-bold text-white">{config.duration} Days</span> for{" "}
+        <span className="font-bold text-white">1 Semester</span> from the day
+        you purchase.
       </div>
       {/* Features */}
       <ul className="mb-6 flex flex-col gap-2">
         {config.features.map((feature, idx) => (
-          <li key={feature} className="flex items-center gap-2 text-sm">
+          <li
+            key={feature}
+            className="flex items-center gap-2 text-sm text-[rgba(255,255,255,0.7)]"
+          >
             {features[idx] ? (
-              <CheckCircleIcon className="h-5 w-5" weight="duotone" />
+              <CheckCircleIcon
+                className="h-5 w-5 text-emerald-400"
+                weight="duotone"
+              />
             ) : (
-              <XCircleIcon className="h-5 w-5" weight="duotone" />
+              <XCircleIcon
+                className="h-5 w-5 text-[rgba(255,255,255,0.3)]"
+                weight="duotone"
+              />
             )}
             <span className={features[idx] ? "" : "line-through opacity-60"}>
               {feature}
@@ -85,7 +96,7 @@ function PricingCard({
       </ul>
       <Link className="mt-auto w-full" href={`/premium?tier=${tier}`}>
         <Button
-          className={`w-full rounded-md border-4 border-black bg-white px-6 py-2 font-bold text-black shadow-[4px_4px_0px_0px_#000] transition-all duration-200 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:bg-gray-100 hover:shadow-[6px_6px_0px_0px_#000]`}
+          className="w-full rounded-lg border border-[rgba(255,255,255,0.2)] bg-white px-6 py-2 font-bold text-black transition-all duration-200 hover:bg-[rgba(255,255,255,0.9)]"
           data-umami-event={`landing-pricing-card-buy-${tier.toLowerCase()}`}
         >
           Buy Now
@@ -98,30 +109,32 @@ function PricingCard({
 export default function Pricing() {
   return (
     <section id="pricing" className="relative overflow-hidden py-20 lg:py-32">
+      {/* Top border line */}
+      <div className="absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.1)] to-transparent" />
       <div className="relative z-10 container mx-auto">
         <Image
           src="/doodles/idea.svg"
           alt="Hero"
           width={50}
           height={50}
-          className="absolute -top-16 left-0 size-16 md:-top-20 md:size-28"
+          className="absolute -top-16 left-0 size-16 opacity-60 md:-top-20 md:size-28"
         />
         <Image
           src="/doodles/exmark.svg"
           alt="Hero"
           width={50}
           height={50}
-          className="absolute -top-14 right-0 size-16 md:-top-16 md:size-28"
+          className="absolute -top-14 right-0 size-16 opacity-60 md:-top-16 md:size-28"
         />
         <div className="mb-16 text-center md:mb-20">
-          <h2 className="font-regular font-excon mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight font-black tracking-tighter md:text-5xl lg:text-6xl">
+          <h2 className="font-excon mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight font-black tracking-tighter text-white md:text-5xl lg:text-6xl">
             Why Study the Hard Way?
           </h2>
-          <p className="text-secondary font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight md:text-xl">
+          <p className="font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight text-[rgba(255,255,255,0.6)] md:text-xl">
             Unlock the perfect guide to your preparation journey.
           </p>
         </div>
-        <div className="mx-4 grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-12">
+        <div className="mx-4 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
           {getAllTierConfigs().map((tier) => (
             <PricingCard
               key={tier.tier}

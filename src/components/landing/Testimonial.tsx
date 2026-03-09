@@ -42,13 +42,13 @@ function TestimonialCard({
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="relative rounded-md border-4 border-black p-8 shadow-[8px_8px_0px_0px_#000] transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_#000] dark:border-white/20 dark:shadow-[8px_8px_0px_0px_#fff] dark:hover:shadow-[12px_12px_0px_0px_#fff]">
+      <div className="relative rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] p-8 backdrop-blur-sm transition-all duration-300 hover:border-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.05)]">
         <div className="relative z-10">
           {/* Quote Icon */}
           <div className="mb-4">
             <QuotesIcon
               weight="fill"
-              className="h-8 w-8 text-black dark:text-white"
+              className="h-8 w-8 text-[rgba(255,255,255,0.3)]"
             />
           </div>
 
@@ -60,15 +60,15 @@ function TestimonialCard({
                 weight={index < rating ? "fill" : "regular"}
                 className={`h-4 w-4 ${
                   index < rating
-                    ? "text-black dark:text-white"
-                    : "text-gray-400 dark:text-gray-600"
+                    ? "text-amber-400"
+                    : "text-[rgba(255,255,255,0.2)]"
                 }`}
               />
             ))}
           </div>
 
           {/* Content */}
-          <p className="font-satoshi mb-6 leading-relaxed font-medium text-black dark:text-white">
+          <p className="font-satoshi mb-6 leading-relaxed font-medium text-[rgba(255,255,255,0.8)]">
             &quot;{content}&quot;
           </p>
 
@@ -79,13 +79,11 @@ function TestimonialCard({
               alt={name}
               width={48}
               height={48}
-              className="h-12 w-12 rounded-md border-4 border-black dark:border-white"
+              className="h-12 w-12 rounded-full border-2 border-[rgba(255,255,255,0.2)]"
             />
             <div>
-              <h4 className="font-excon font-bold text-black dark:text-white">
-                {name}
-              </h4>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <h4 className="font-excon font-bold text-white">{name}</h4>
+              <p className="text-sm font-medium text-[rgba(255,255,255,0.5)]">
                 {role}
               </p>
             </div>
@@ -171,6 +169,8 @@ export default function Testimonial() {
   return (
     <section className="relative overflow-hidden py-20 lg:py-32">
       <div className="absolute inset-0" />
+      {/* Top border line */}
+      <div className="absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.1)] to-transparent" />
 
       <div className="relative z-10 container mx-auto">
         <motion.div
@@ -181,13 +181,13 @@ export default function Testimonial() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.h2
-            className="font-regular font-excon mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight font-black tracking-tighter md:text-5xl lg:text-6xl"
+            className="font-excon mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight font-black tracking-tighter text-white md:text-5xl lg:text-6xl"
             variants={titleVariants}
           >
             What Students Say
           </motion.h2>
           <motion.p
-            className="text-secondary font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight md:text-xl"
+            className="font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight text-[rgba(255,255,255,0.6)] md:text-xl"
             variants={titleVariants}
           >
             Join thousands of students who have transformed their learning
@@ -196,7 +196,7 @@ export default function Testimonial() {
         </motion.div>
 
         <motion.div
-          className="mx-4 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12"
+          className="mx-4 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

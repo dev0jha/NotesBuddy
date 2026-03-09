@@ -45,15 +45,15 @@ function FeatureCard({
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="bg-card relative rounded-2xl border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <div className="relative rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] p-8 backdrop-blur-sm transition-all duration-300 hover:border-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.05)]">
         <div className="relative z-10">
-          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:bg-black">
+          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] text-white">
             {icon}
           </div>
-          <h3 className="text-foreground font-excon mb-3 text-xl font-semibold">
+          <h3 className="font-excon mb-3 text-xl font-semibold text-white">
             {title}
           </h3>
-          <p className="text-muted-foreground font-satoshi leading-relaxed">
+          <p className="font-satoshi leading-relaxed text-[rgba(255,255,255,0.6)]">
             {description}
           </p>
         </div>
@@ -114,6 +114,8 @@ export default function Features() {
   return (
     <section className="relative overflow-hidden py-20 lg:py-32">
       <div className="absolute inset-0" />
+      {/* Top border line */}
+      <div className="absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.1)] to-transparent" />
       <div className="relative z-10 container mx-auto">
         <motion.div
           className="mb-16 text-center md:mb-20"
@@ -122,22 +124,22 @@ export default function Features() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="font-regular font-excon relative mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight font-black tracking-tighter md:text-5xl lg:text-6xl">
+          <h2 className="font-excon relative mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight font-black tracking-tighter text-white md:text-5xl lg:text-6xl">
             Features of Notes Buddy
             <Image
               width={50}
               height={50}
               src="/doodles/quiz.svg"
               alt="Notes Buddy"
-              className="absolute -top-16 left-0 size-16 md:-top-20 md:size-28"
+              className="absolute -top-16 left-0 size-16 opacity-60 md:-top-20 md:size-28"
             />
           </h2>
-          <p className="text-secondary font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight md:text-xl">
+          <p className="font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight text-[rgba(255,255,255,0.6)] md:text-xl">
             Everything you need to excel in your studies, all in one place
           </p>
         </motion.div>
         <motion.div
-          className="mx-4 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12"
+          className="mx-4 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

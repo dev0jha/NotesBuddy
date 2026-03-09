@@ -14,7 +14,6 @@ import {
 
 import { Link } from "next-view-transitions";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { ThemeToggle } from "../ui/theme-toggle";
 import LogOutButton from "../auth/LogOutButton";
 import { SignInButton } from "../auth/SignInButton";
 import { UserIcon } from "../icons/UserIcon";
@@ -60,7 +59,6 @@ export default function Profile() {
   if (!mounted || isPending) {
     return (
       <div className="ml-4 flex items-center justify-center gap-2 md:ml-0 md:gap-4">
-        <ThemeToggle />
         <div className="h-10 w-10 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700" />
       </div>
     );
@@ -69,7 +67,6 @@ export default function Profile() {
   if (!session) {
     return (
       <div className="ml-4 flex items-center justify-center gap-2 md:ml-0 md:gap-4">
-        <ThemeToggle />
         <SignInButton />
       </div>
     );
@@ -157,12 +154,6 @@ export default function Profile() {
             AI Assistant
           </DropdownMenuItem>
         </Link>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="flex items-center justify-center">
-          <div data-umami-event="profile-dropdown-theme-toggle-click">
-            <ThemeToggle />
-          </div>
-        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <div data-umami-event="profile-dropdown-report-click">

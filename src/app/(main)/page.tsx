@@ -63,15 +63,13 @@ export const dynamic = "force-static";
 
 export default function Home() {
   return (
-    <div className="font-satoshi container mx-auto min-h-screen max-w-6xl">
-      <div className="mx-4">
-        <HeroSection />
-        <About />
-        <Features />
-        <Pricing />
-        <Testimonial />
-        <FAQ />
-      </div>
+    <div className="font-satoshi relative container mx-auto max-w-6xl px-4">
+      <HeroSection />
+      <About />
+      <Features />
+      <Pricing />
+      <Testimonial />
+      <FAQ />
     </div>
   );
 }

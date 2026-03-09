@@ -65,22 +65,30 @@ export default function HeroSection() {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full">
+    <div className="w-full py-16 lg:py-24">
       <div className="container mx-auto">
-        <div className="relative flex flex-col items-center justify-center gap-8 py-0 lg:py-10">
-          <Science className="absolute top-4 left-4 size-24 md:size-64" />
-          <Cap className="absolute right-10 -bottom-16 size-24 md:bottom-10 md:size-64 lg:bottom-0" />
+        <div className="relative flex flex-col items-center justify-center gap-8">
+          <Science className="absolute top-4 left-4 size-24 opacity-40 md:size-64" />
+          <Cap className="absolute right-10 -bottom-16 size-24 opacity-40 md:bottom-10 md:size-64 lg:bottom-0" />
           <div>
-            <Button variant="secondary" size="sm" className="gap-4">
+            <Button
+              variant="secondary"
+              size="sm"
+              className="gap-4 rounded-full border border-[rgba(255,255,255,0.15)] bg-[rgba(255,255,255,0.05)] text-[rgba(255,255,255,0.7)] backdrop-blur-sm hover:bg-[rgba(255,255,255,0.1)]"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              </span>
               Now it is time to study{" "}
-              <ArrowRightIcon weight="duotone" className="size-4" />
+              <ArrowRightIcon weight="bold" className="size-4" />
             </Button>
           </div>
           <div className="flex flex-col gap-4">
-            <h1 className="font-regular max-w-2xl text-center text-5xl tracking-tighter md:text-7xl">
-              <span className="font-excon relative font-black">
+            <h1 className="font-regular max-w-3xl text-center text-5xl tracking-tighter md:text-7xl">
+              <span className="font-excon relative font-black text-white">
                 Your all-in-one learning platform
-                <HandDrawnArrow className="absolute right-2 mx-auto mt-4 size-8 md:-right-8 md:size-12" />
+                <HandDrawnArrow className="absolute right-2 mx-auto mt-4 size-8 text-[rgba(255,255,255,0.5)] md:-right-8 md:size-12" />
               </span>
 
               <span className="font-ranade relative flex w-full justify-center overflow-hidden text-center md:pt-1 md:pb-4">
@@ -88,7 +96,7 @@ export default function HeroSection() {
                 {titles.map((title, index) => (
                   <motion.div
                     key={index}
-                    className="absolute font-light"
+                    className="absolute bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 bg-clip-text font-light text-transparent"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
@@ -109,16 +117,16 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <p className="text-secondary font-satoshi max-w-2xl text-center text-lg leading-relaxed tracking-tight md:text-xl">
+            <p className="font-satoshi max-w-2xl text-center text-lg leading-relaxed tracking-tight text-[rgba(255,255,255,0.6)] md:text-xl">
               Preparing for exams is already challenging enough. <br />
               Avoid further complications by ditching outdated study methods.
             </p>
           </div>
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row gap-4">
             <Link href="/notes">
               <Button
                 size="lg"
-                className="gap-4 border-2 border-black bg-white text-black shadow-[4px_4px_0px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:text-white hover:shadow-[2px_2px_0px_0px_#000] dark:border-white/20 dark:bg-zinc-900 dark:text-white dark:shadow-[4px_4px_0px_0px_#757373] dark:hover:shadow-[2px_2px_0px_0px_#757373]"
+                className="gap-4 rounded-lg border border-[rgba(255,255,255,0.2)] bg-white px-6 py-3 text-black transition-all duration-300 hover:bg-[rgba(255,255,255,0.9)]"
               >
                 Visit Notes <BookOpenIcon weight="duotone" className="size-4" />
               </Button>
@@ -126,7 +134,7 @@ export default function HeroSection() {
             <Link href="/premium">
               <Button
                 size="lg"
-                className="gap-4 border-2 border-black bg-black text-white shadow-[4px_4px_0px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:bg-white hover:text-black hover:shadow-[2px_2px_0px_0px_#000] dark:border-white/20 dark:bg-white dark:text-black dark:shadow-[4px_4px_0px_0px_#757373] dark:hover:shadow-[2px_2px_0px_0px_#757373]"
+                className="gap-4 rounded-lg border border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.1)] px-6 py-3 text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.15)]"
               >
                 Purchase Premium{" "}
                 <StarIcon weight="duotone" className="size-4" />
@@ -134,7 +142,7 @@ export default function HeroSection() {
             </Link>
           </div>
           <div className="flex flex-row gap-3">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <div className="flex -space-x-2">
                 {testimonials.map((testimonial) => (
                   <Image
@@ -143,11 +151,11 @@ export default function HeroSection() {
                     alt="User testimonial"
                     width={32}
                     height={32}
-                    className="h-8 w-8 rounded-full border-2 border-white transition-all duration-300 hover:scale-150 hover:cursor-pointer"
+                    className="h-8 w-8 rounded-full border-2 border-[#121212] transition-all duration-300 hover:scale-125 hover:cursor-pointer"
                   />
                 ))}
               </div>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-[rgba(255,255,255,0.5)]">
                 Trusted by 1000+ students
               </p>
             </div>

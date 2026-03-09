@@ -101,19 +101,17 @@ function FeatureCard({
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="bg-card dark:bg-card border-primary dark:border-secondary shadow-primary dark:shadow-secondary hover:shadow-primary/60 dark:hover:shadow-secondary/60 relative rounded-2xl border p-8 shadow-[8px_8px_0px_0px] backdrop-blur-sm transition-all duration-300 hover:shadow-[4px_4px_0px_0px]">
-        <div className="from-primary/5 dark:from-primary/10 absolute inset-0 rounded-2xl bg-gradient-to-br to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
+      <div className="relative rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] p-8 backdrop-blur-sm transition-all duration-300 hover:border-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.05)]">
         <div className="relative z-10">
-          <div className="bg-primary/10 dark:bg-primary/20 group-hover:bg-primary/20 dark:group-hover:bg-primary/30 mb-6 flex h-12 w-12 items-center justify-center rounded-md transition-colors duration-300">
+          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] text-white">
             {icon}
           </div>
 
-          <h3 className="text-foreground dark:text-foreground font-excon mb-3 text-xl font-semibold">
+          <h3 className="font-excon mb-3 text-xl font-semibold text-white">
             {title}
           </h3>
 
-          <p className="text-muted-foreground dark:text-muted-foreground font-satoshi mt-4 text-lg leading-relaxed">
+          <p className="font-satoshi mt-4 text-lg leading-relaxed text-[rgba(255,255,255,0.6)]">
             {description}
           </p>
         </div>
@@ -171,6 +169,8 @@ export default function About() {
   return (
     <section className="relative overflow-hidden py-20 lg:py-32">
       <div className="absolute inset-0" />
+      {/* Top border line */}
+      <div className="absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.1)] to-transparent" />
 
       <div className="relative z-10 container mx-auto">
         <motion.div
@@ -181,22 +181,25 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.h2
-            className="font-regular mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight tracking-tighter md:text-5xl lg:text-6xl"
+            className="mx-auto mb-6 max-w-4xl text-center text-4xl leading-tight tracking-tighter md:text-5xl lg:text-6xl"
             variants={titleVariants}
           >
-            <span className="font-excon font-black">Learn </span>
+            <span className="font-excon font-black text-white">Learn </span>
             <span className="font-ranade relative">
               <AnimatedTextCycle
                 words={animatedWords}
                 interval={3000}
-                className="text-primary"
+                className="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 bg-clip-text text-transparent"
               />
             </span>
-            <span className="font-excon font-black"> with Notes Buddy</span>
+            <span className="font-excon font-black text-white">
+              {" "}
+              with Notes Buddy
+            </span>
           </motion.h2>
 
           <motion.p
-            className="text-secondary font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight md:text-xl"
+            className="font-satoshi mx-auto max-w-3xl text-center text-lg leading-relaxed tracking-tight text-[rgba(255,255,255,0.6)] md:text-xl"
             variants={titleVariants}
           >
             Transform your learning experience with our innovative platform
@@ -206,7 +209,7 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          className="line-clamp-3 grid grid-cols-1 gap-8 p-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-12"
+          className="grid grid-cols-1 gap-6 p-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
